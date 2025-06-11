@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+
+    {% load static %}
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/registro.css' %}">
+</head>
+<body class="bg-light">
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card shadow-lg p-4" style="width: 100%; max-width: 520px; border-radius: 20px;">
+            <h3 class="text-center mb-4 text-primary font-weight-bold">Registro de Usuario</h3>
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="{{ form.username.id_for_label }}">Nombre de usuario:</label>
+                    {{ form.username }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.email.id_for_label }}">Correo electrónico:</label>
+                    {{ form.email }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.nombre.id_for_label }}">Nombre:</label>
+                    {{ form.nombre }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.apellido_paterno.id_for_label }}">Apellido Paterno:</label>
+                    {{ form.apellido_paterno }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.apellido_materno.id_for_label }}">Apellido Materno:</label>
+                    {{ form.apellido_materno }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.genero.id_for_label }}">Género:</label>
+                    {{ form.genero }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.password1.id_for_label }}">Contraseña:</label>
+                    {{ form.password1 }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.password2.id_for_label }}">Confirmar contraseña:</label>
+                    {{ form.password2 }}
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block mt-2">Registrarse</button>
+            </form>
+
+            {% if form.errors %}
+                <div class="alert alert-danger mt-3">
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <div class="mt-4 text-center">
+                <a href="{% url 'login' %}" class="btn btn-outline-secondary">Volver al Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+

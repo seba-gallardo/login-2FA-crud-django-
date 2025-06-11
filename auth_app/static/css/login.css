@@ -1,0 +1,80 @@
+/* Fondo general y fuente */
+body {
+    background: linear-gradient(to right, #f0f4f8, #d9e2ec);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Tarjeta principal */
+.card {
+    border-radius: 20px;
+    transition: transform 0.3s ease;
+    background-color: #ffffff;
+}
+
+.card:hover {
+    transform: scale(1.01);
+}
+
+/* Título y logo */
+h3 {
+    font-weight: bold;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Formularios */
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.6rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.2);
+    outline: none;
+}
+
+/* Botón */
+button {
+    font-weight: bold;
+    padding: 0.6rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #004a99;
+}
+
+/* Enlaces */
+a {
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #003366;
+}
+
+/* Alertas */
+.alert {
+    border-radius: 12px;
+    font-size: 14px;
+}
