@@ -26,11 +26,10 @@ def registro_view(request):
         form = RegistroForm(request.POST)
         if form.is_valid():
             user = form.save()
-            messages.success(request, 'Usuario registrado exitosamente.')
             return redirect('login')
     else:
         form = RegistroForm()
-    
+
     return render(request, 'auth_app/registro.html', {'form': form})
 
 @login_required

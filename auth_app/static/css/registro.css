@@ -14,18 +14,33 @@ h3 {
     font-weight: bold;
 }
 
-/* Formularios */
+/* Formularios con alineación perfecta */
 .form-group {
     margin-bottom: 1.2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
 }
 
 .form-group label {
     font-weight: 600;
-    margin-bottom: 0.3rem;
-    display: block;
+    color: #333;
+    white-space: nowrap;
+    min-width: 140px; /* Ancho fijo para todos los labels */
+    text-align: right;
+    padding-top: 0.6rem; /* Alinear verticalmente con el input */
+    margin-bottom: 0;
 }
 
-.form-group input,
+/* Contenedor para el input y sus mensajes */
+.input-container {
+    flex: 1;
+    width: 100%;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
 .form-group select {
     width: 100%;
     padding: 0.6rem;
@@ -33,26 +48,65 @@ h3 {
     border: 1px solid #ccc;
     border-radius: 8px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+    box-sizing: border-box;
 }
 
-.form-group input:focus,
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus,
 .form-group select:focus {
     border-color: #007bff;
     box-shadow: 0 0 0 3px rgba(0,123,255,0.2);
     outline: none;
 }
 
-/* Botón */
-button {
+/* Estilos para campos con errores */
+.form-group input.is-invalid,
+.form-group select.is-invalid {
+    border-color: #dc3545;
+}
+
+.form-group input.is-invalid:focus,
+.form-group select.is-invalid:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2);
+}
+
+/* Mensajes de error alineados */
+.text-danger {
+    color: #dc3545 !important;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+.text-danger div {
+    margin-bottom: 0.25rem;
+}
+
+/* Texto de ayuda alineado */
+.form-text {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+/* Botón centrado */
+.btn-primary {
     font-weight: bold;
     padding: 0.6rem;
     transition: background-color 0.3s ease;
+    width: 100%;
 }
 
-button:hover {
-    background-color: #004a99;
+.btn-primary:hover {
+    background-color: #004a99 !important;
+    border-color: #004a99 !important;
 }
 
+/* Enlaces */
 a {
     text-decoration: none;
     font-weight: 600;
@@ -67,4 +121,32 @@ a:hover {
 .alert {
     border-radius: 12px;
     font-size: 14px;
+    margin-top: 1rem;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+/* Responsive: En pantallas pequeñas, cambiar a diseño vertical */
+@media (max-width: 576px) {
+    .form-group {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .form-group label {
+        min-width: auto;
+        text-align: left;
+        padding-top: 0;
+        margin-bottom: 0.3rem;
+    }
 }
