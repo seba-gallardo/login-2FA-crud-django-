@@ -1,7 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from django.contrib import messages
 from .forms import LoginForm, RegistroForm
 
 def login_view(request):
@@ -15,7 +14,8 @@ def login_view(request):
                 login(request, user)
                 return redirect('inicio')
             else:
-                messages.error(request, 'Usuario o contraseña incorrectos.')
+                # Agregar error cuando las credenciales son incorrectas
+                form.add_error(None, 'Usuario o contraseña incorrectos.')
     else:
         form = LoginForm()
     
