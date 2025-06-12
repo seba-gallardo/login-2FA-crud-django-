@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     
     #Mis Propias Apps
     'auth_app.apps.AuthAppConfig',
+    'MiCrud.apps.MicrudConfig',
 ]
 
 MIDDLEWARE = [
@@ -126,4 +127,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Mis configuraciones
 AUTH_USER_MODEL = 'auth_app.Usuario'
-# LOGIN_REDIRECT_URL = '/inicio/'

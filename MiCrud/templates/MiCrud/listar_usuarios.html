@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Usuarios</title>
+
+    <!-- Vincula Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Vincula tu archivo CSS personalizado -->
+    <link rel="stylesheet" href="{% static 'css/listar_usuario.css' %}">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="text-primary">Listado de Usuarios</h1>
+        <a href="{% url 'crear_usuario' %}" class="btn btn-success">Crear nuevo usuario</a>
+    </div>
+
+    <!-- Botón para volver al inicio-->
+    <div class="mb-4">
+        <a href="{% url 'inicio' %}" class="btn btn-secondary">Volver atrás</a>
+    </div>
+
+    <!-- Tabla de usuarios -->
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido_Paterno</th>
+                <th>Apellido_Materno</th>
+                <th>Genero</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario.nombre }}</td>
+                <td>{{ usuario.apellido_paterno }}</td>
+                <td>{{ usuario.apellido_materno }}</td>
+                <td>{{ usuario.genero }}</td>
+                <td>
+                    <a href="{% url 'editar_usuario' usuario.pk %}" class="btn btn-warning btn-sm">Editar</a>
+                    <form action="{% url 'eliminar_usuario' usuario.pk %}" method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este usuario?');">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Vincula Bootstrap JS y dependencias -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

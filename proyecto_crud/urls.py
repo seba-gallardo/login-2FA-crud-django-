@@ -12,5 +12,5 @@ urlpatterns = [
     
     # Prefijos específicos por app
     path('auth/', include('auth_app.urls')),  # Enlaza las rutas de la app 'auth_app.urls'
-    
+    path('usuarios/', include('MiCrud.urls')), # Enlaza las rutas de la app 'crudSeba.urls'
 ]

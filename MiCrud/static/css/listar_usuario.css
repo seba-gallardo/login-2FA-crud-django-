@@ -1,0 +1,122 @@
+/* Fondo general para la página */
+body {
+    background-color: #f4f7fc;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Contenedor principal */
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Título de la página */
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* Botón de "Volver atrás" */
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Estilos para la tabla */
+.table {
+    font-size: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Cabecera de la tabla */
+.thead-dark {
+    background-color: #343a40;
+    color: #ffffff;
+    text-align: center;
+}
+
+/* Fila de la tabla */
+.table-bordered th, .table-bordered td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+}
+
+/* Filas alternas de la tabla */
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+/* Botones dentro de la tabla */
+.btn {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* Botón de editar */
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+/* Botón de eliminar */
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Espaciado en la tabla */
+.table th, .table td {
+    vertical-align: middle;
+}
+
+/* Espaciado entre el título y la tabla */
+.mb-4 {
+    margin-bottom: 20px;
+}
+
+/* Estilo para el botón "Crear nuevo usuario" */
+.btn-success {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.btn-success:hover {
+    background-color: #28a745;
+    color: white;
+}
+
+/* Estilo para mensajes de error */
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
