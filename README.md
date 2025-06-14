@@ -1,5 +1,10 @@
 # login-2FA-crud-django
 
+### Dependencias utilizadas
+- Django 5.2
+- Python 3.12.9
+- pyotp qrcode[pil]
+
 ### Comandos Django
 - django-admin startproject mi_proyecto
 - python manage.py runserver
