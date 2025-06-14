@@ -2,14 +2,17 @@ from django.shortcuts import render, get_object_or_404, redirect
 from auth_app.models import Usuario
 from auth_app.forms import RegistroForm
 from .forms import UsuarioEditForm
+from django.contrib.auth.decorators import login_required
 
 # Listar usuarios
+@login_required
 def listar_usuarios(request):
     #usuarios = Usuario.objects.all()
     usuarios = Usuario.objects.filter(is_superuser=False)
     return render(request, 'MiCrud/listar_usuarios.html', {'usuarios': usuarios})
 
 # Crear usuario
+@login_required
 def crear_usuario(request):
     if request.method == 'POST':
         form = RegistroForm(request.POST)
@@ -27,6 +30,7 @@ def crear_usuario(request):
     return render(request, 'MiCrud/registro_usuario.html', {'form': form})
 
 # Editar usuario
+@login_required
 def editar_usuario(request, pk):
     usuario = get_object_or_404(Usuario, pk=pk)
     if request.method == 'POST':
@@ -39,6 +43,7 @@ def editar_usuario(request, pk):
     return render(request, 'MiCrud/editar_usuario.html', {'form': form})
 
 # Eliminar usuario
+@login_required
 def eliminar_usuario(request, pk):
     usuario = get_object_or_404(Usuario, pk=pk)
     usuario.delete()

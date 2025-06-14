@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurar 2FA</title>
+    {% load static %}
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-lg" style="border-radius: 20px;">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h3><i class="fas fa-shield-alt"></i> Configurar Autenticación en Dos Pasos</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        {% if not is_2fa_enabled %}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5>Paso 1: Escanea el código QR</h5>
+                                    <p class="text-muted">Usa Google Authenticator o una app similar para escanear este código:</p>
+                                    <div class="text-center mb-3">
+                                        <img src="data:image/png;base64,{{ qr_code }}" alt="Código QR" class="img-fluid" style="max-width: 200px;">
+                                    </div>
+                                    <p class="text-muted"><small>
+                                        <strong>Clave manual:</strong><br>
+                                        <code>{{ secret }}</code>
+                                    </small></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>Paso 2: Ingresa el código</h5>
+                                    <p class="text-muted">Ingresa el código de 6 dígitos que aparece en tu app:</p>
+                                    
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label for="{{ form.token.id_for_label }}">Código de verificación:</label>
+                                            {{ form.token }}
+                                        </div>
+                                        <button type="submit" class="btn btn-success btn-block">Activar 2FA</button>
+                                    </form>
+
+                                    {% if form.errors %}
+                                        <div class="alert alert-danger mt-3">
+                                            {% for field in form %}
+                                                {% for error in field.errors %}
+                                                    <p class="mb-0">{{ error }}</p>
+                                                {% endfor %}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-success text-center">
+                                <h4><i class="fas fa-check-circle"></i> 2FA está activado</h4>
+                                <p>Tu cuenta está protegida con autenticación en dos pasos.</p>
+                                <form method="post" action="{% url 'disable_2fa' %}" class="d-inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que quieres desactivar 2FA?')">
+                                        Desactivar 2FA
+                                    </button>
+                                </form>
+                            </div>
+                        {% endif %}
+                        
+                        <div class="mt-4 text-center">
+                            <a href="{% url 'inicio' %}" class="btn btn-outline-secondary">Volver al inicio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -6,6 +6,30 @@ class LoginForm(forms.Form):
     username = forms.CharField(max_length=150, label='Usuario')
     password = forms.CharField(widget=forms.PasswordInput, label='Contraseña')
 
+class TwoFactorForm(forms.Form):
+    token = forms.CharField(
+        max_length=6,
+        min_length=6,
+        label='Código de verificación',
+        widget=forms.TextInput(attrs={
+            'placeholder': '123456',
+            'class': 'form-control text-center',
+            'autocomplete': 'off'
+        })
+    )
+
+class Setup2FAForm(forms.Form):
+    token = forms.CharField(
+        max_length=6,
+        min_length=6,
+        label='Código de verificación',
+        widget=forms.TextInput(attrs={
+            'placeholder': '123456',
+            'class': 'form-control text-center',
+            'autocomplete': 'off'
+        })
+    )
+
 class RegistroForm(UserCreationForm):
     email = forms.EmailField(required=True, label='Email')
     nombre = forms.CharField(max_length=100, label='Nombre')
