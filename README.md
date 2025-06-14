@@ -1,4 +1,4 @@
-# login-crud-django
+# login-2FA-crud-django
 
 ### Comandos Django
 - django-admin startproject mi_proyecto
