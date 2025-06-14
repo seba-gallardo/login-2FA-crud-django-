@@ -17,6 +17,7 @@
 ### Comandos generales
 - pip install -r requirements.txt
 - pip install django
+- pip install pyotp qrcode[pil]
 
 ### Eliminar migraciones
 1. del db.sqlite3
